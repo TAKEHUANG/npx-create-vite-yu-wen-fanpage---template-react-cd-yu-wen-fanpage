@@ -1,146 +1,105 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>鈺雯粉絲團</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #8A2BE2;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #8A2BE2;
-    }
-    .section {
-      margin-bottom: 20px;
-    }
-    .comments textarea {
-      width: 100%;
-      height: 80px;
-      margin-top: 10px;
-    }
-    .comments button {
-      background-color: #8A2BE2;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .comments-list {
-      margin-top: 20px;
-    }
-    .comment {
-      background-color: #eee;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .gallery, .videos, .media-reports {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .gallery img, .videos iframe {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 8px;
-    }
-    .videos iframe {
-      height: 135px;
-    }
-    .media-reports a {
-      display: block;
-      margin-bottom: 8px;
-      color: #333;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>鈺雯粉絲團</h1>
-    <p>一起支持最有行動力的檢察官！</p>
-  </header>
-  <main>
-    <section class="section">
-      <h2>粉絲數：<span id="fan-count">2,587</span> 人</h2>
-    </section>
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
-    <section class="section">
-      <h2>三大貢獻</h2>
-      <ul>
-        <li><strong>主動出擊：</strong>值勤時主動發掘線索，指揮警力查緝毒販。</li>
-        <li><strong>刨根究底：</strong>溯源查獲製毒工廠與毒品原料，查扣大量毒品與犯罪所得。</li>
-        <li><strong>守護民安：</strong>有效防止新興毒品流入市面，維護市民健康。</li>
-      </ul>
-    </section>
+export default function YuWenFanPage() {
+  const [followers, setFollowers] = useState(12345);
 
-    <section class="section">
-      <h2>照片牆</h2>
-      <div class="gallery">
-        <img src="https://via.placeholder.com/240x160?text=照片1" alt="照片1">
-        <img src="https://via.placeholder.com/240x160?text=照片2" alt="照片2">
-        <img src="https://via.placeholder.com/240x160?text=照片3" alt="照片3">
-      </div>
-    </section>
+  const handleFollow = () => {
+    setFollowers(followers + 1);
+  };
 
-    <section class="section">
-      <h2>影片專區</h2>
-      <div class="videos">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="影片1" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/oHg5SJYRHA0" title="影片2" allowfullscreen></iframe>
-      </div>
-    </section>
+  return (
+    <div className="p-8 max-w-5xl mx-auto space-y-8">
+      <header className="text-center space-y-4">
+        <h1 className="text-4xl font-bold">鈺雯粉絲團</h1>
+        <p className="text-lg text-gray-600">追蹤檢察官黃鈺雯的正義行動與最新消息！</p>
+        <Button onClick={handleFollow}>追蹤（{followers.toLocaleString()} 人已追蹤）</Button>
+      </header>
 
-    <section class="section">
-      <h2>媒體報導</h2>
-      <div class="media-reports">
-        <a href="#" target="_blank">自由時報：檢察官黃鈺雯破獲大規模製毒工廠</a>
-        <a href="#" target="_blank">聯合報：鈺雯檢察官主導重大毒品案件</a>
-        <a href="#" target="_blank">中時新聞：從持毒者追查到集團首腦</a>
-      </div>
-    </section>
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card>
+          <CardContent className="p-4">
+            <h2 className="text-xl font-semibold">🔍 精準指揮，主動出擊</h2>
+            <p className="mt-2 text-gray-700">
+              黃檢察官值勤時主動發掘線索，果斷指揮司法警察查緝製毒、販毒行為，有效壓制犯罪擴散。
+            </p>
+          </CardContent>
+        </Card>
 
-    <section class="section comments">
-      <h2>留言支持鈺雯</h2>
-      <textarea id="comment-input" placeholder="留下你的鼓勵或想說的話..."></textarea>
-      <br>
-      <button onclick="addComment()">送出留言</button>
-      <div class="comments-list" id="comments"></div>
-    </section>
-  </main>
+        <Card>
+          <CardContent className="p-4">
+            <h2 className="text-xl font-semibold">🧪 追本溯源，刨根究底</h2>
+            <p className="mt-2 text-gray-700">
+              成功查獲臺中大里、太平製毒據點，扣得毒品與設備，並從持毒者擴及上游，瓦解整個販毒集團網絡。
+            </p>
+          </CardContent>
+        </Card>
 
-  <script>
-    function addComment() {
-      const input = document.getElementById('comment-input');
-      const commentText = input.value.trim();
-      if (commentText) {
-        const commentDiv = document.createElement('div');
-        commentDiv.className = 'comment';
-        commentDiv.textContent = commentText;
-        document.getElementById('comments').prepend(commentDiv);
-        input.value = '';
-      }
-    }
-  </script>
-</body>
-</html>
+        <Card>
+          <CardContent className="p-4">
+            <h2 className="text-xl font-semibold">🏆 守護民安，成效卓著</h2>
+            <p className="mt-2 text-gray-700">
+              成功阻斷依托咪酯流入市面，守護民眾健康，展現檢察官查緝毒品的專業與決心。
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">🖼️ 照片牆</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <img
+              key={i}
+              src={`https://placekitten.com/300/20${i}`}
+              alt={`鈺雯照片 ${i}`}
+              className="rounded-lg shadow"
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">🎬 影片專區</h2>
+        <div className="aspect-w-16 aspect-h-9">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YuWen Video"
+            className="w-full h-64 rounded-lg shadow"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">📰 媒體報導彙整</h2>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <a
+              href="https://example.com/news1"
+              className="text-blue-600 underline"
+              target="_blank"
+            >自由時報：黃檢察官成功破獲製毒工廠</a>
+          </li>
+          <li>
+            <a
+              href="https://example.com/news2"
+              className="text-blue-600 underline"
+              target="_blank"
+            >聯合報：深入販毒集團核心，查獲大批毒品</a>
+          </li>
+        </ul>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">📢 留言支持</h2>
+        <div className="space-y-2">
+          <Input placeholder="輸入您的支持留言..." />
+          <Button>送出</Button>
+        </div>
+      </section>
+    </div>
+  );
+}
