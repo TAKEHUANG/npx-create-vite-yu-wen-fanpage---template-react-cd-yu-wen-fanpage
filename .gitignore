@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鈺雯粉絲團</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #8A2BE2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #8A2BE2;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .comments textarea {
+      width: 100%;
+      height: 80px;
+      margin-top: 10px;
+    }
+    .comments button {
+      background-color: #8A2BE2;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .comments-list {
+      margin-top: 20px;
+    }
+    .comment {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .gallery, .videos, .media-reports {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gallery img, .videos iframe {
+      width: 100%;
+      max-width: 240px;
+      border-radius: 8px;
+    }
+    .videos iframe {
+      height: 135px;
+    }
+    .media-reports a {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>鈺雯粉絲團</h1>
+    <p>一起支持最有行動力的檢察官！</p>
+  </header>
+  <main>
+    <section class="section">
+      <h2>粉絲數：<span id="fan-count">2,587</span> 人</h2>
+    </section>
+
+    <section class="section">
+      <h2>三大貢獻</h2>
+      <ul>
+        <li><strong>主動出擊：</strong>值勤時主動發掘線索，指揮警力查緝毒販。</li>
+        <li><strong>刨根究底：</strong>溯源查獲製毒工廠與毒品原料，查扣大量毒品與犯罪所得。</li>
+        <li><strong>守護民安：</strong>有效防止新興毒品流入市面，維護市民健康。</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>照片牆</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/240x160?text=照片1" alt="照片1">
+        <img src="https://via.placeholder.com/240x160?text=照片2" alt="照片2">
+        <img src="https://via.placeholder.com/240x160?text=照片3" alt="照片3">
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>影片專區</h2>
+      <div class="videos">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="影片1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/oHg5SJYRHA0" title="影片2" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>媒體報導</h2>
+      <div class="media-reports">
+        <a href="#" target="_blank">自由時報：檢察官黃鈺雯破獲大規模製毒工廠</a>
+        <a href="#" target="_blank">聯合報：鈺雯檢察官主導重大毒品案件</a>
+        <a href="#" target="_blank">中時新聞：從持毒者追查到集團首腦</a>
+      </div>
+    </section>
+
+    <section class="section comments">
+      <h2>留言支持鈺雯</h2>
+      <textarea id="comment-input" placeholder="留下你的鼓勵或想說的話..."></textarea>
+      <br>
+      <button onclick="addComment()">送出留言</button>
+      <div class="comments-list" id="comments"></div>
+    </section>
+  </main>
+
+  <script>
+    function addComment() {
+      const input = document.getElementById('comment-input');
+      const commentText = input.value.trim();
+      if (commentText) {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        commentDiv.textContent = commentText;
+        document.getElementById('comments').prepend(commentDiv);
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
